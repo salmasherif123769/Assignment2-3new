@@ -15,10 +15,11 @@
  * @param {object} product
  * @returns {string}
  */
-export function productName(product) {
-  // TODO: read it with a dot.
-  throw new Error("productName is not written yet");
+ export function productName(product) {
+  return product.name;
 }
+  throw new Error("productName is not written yet");
+
 
 /**
  * Reads whichever field it is asked for.
@@ -30,10 +31,11 @@ export function productName(product) {
  * @param {string} field the name of the key to read
  * @returns {*} whatever is stored under that key
  */
-export function getField(product, field) {
-  // TODO: the key is in a variable, so a dot will not work here.
-  throw new Error("getField is not written yet");
+ export function getField(product, field) {
+  return product[field];
 }
+  throw new Error("getField is not written yet");
+
 
 /**
  * The city a student lives in.
@@ -43,10 +45,11 @@ export function getField(product, field) {
  * @param {object} student
  * @returns {string}
  */
-export function studentCity(student) {
-  // TODO: follow the path down to city.
-  throw new Error("studentCity is not written yet");
+ export function studentCity(student) {
+  return student.address.city;
 }
+  throw new Error("studentCity is not written yet");
+
 
 /**
  * A one-line summary of a product.
@@ -57,10 +60,12 @@ export function studentCity(student) {
  * @param {object} product
  * @returns {string}
  */
-export function summarize(product) {
-  // TODO: destructure name and price, then return a template literal.
-  throw new Error("summarize is not written yet");
+ export function summarize(product) {
+  const { name, price } = product;
+  return `${name} costs ${price} EGP`;
 }
+  throw new Error("summarize is not written yet");
+
 
 /**
  * A copy of a product with a different price.
@@ -74,6 +79,7 @@ export function summarize(product) {
  * @returns {object} a new product, with every other key the same
  */
 export function withPrice(product, newPrice) {
-  // TODO: spread the old product, then override price.
-  throw new Error("withPrice is not written yet");
+  return { ...product, price: newPrice };
 }
+  throw new Error("withPrice is not written yet");
+
