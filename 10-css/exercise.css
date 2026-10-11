@@ -40,3 +40,42 @@
 
 /* TODO: a rule for `.price` that sets
  *       color, and font-weight. */
+body {
+  font-family: sans-serif;
+  color: #333333;
+  background-color: #f4f4f4;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+nav a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.card-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.price {
+  color: #b12704;
+  font-weight: bold;
+}
