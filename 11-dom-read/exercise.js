@@ -80,3 +80,29 @@ export function priceOf(name) {
  */
 
 // TODO: write soldOutNames here.
+export function pageHeading() {
+  return document.querySelector("h1").textContent;
+}
+
+export function productCount() {
+  return document.querySelectorAll(".card").length;
+}
+
+export function productNames() {
+  return Array.from(document.querySelectorAll(".card h3")).map((el) => el.textContent);
+}
+
+export function priceOf(name) {
+  const cards = Array.from(document.querySelectorAll(".card"));
+  const foundCard = cards.find((card) => card.querySelector("h3").textContent === name);
+  if (!foundCard) {
+    return null;
+  }
+  return foundCard.querySelector(".price").textContent;
+}
+
+export function soldOutNames() {
+  return Array.from(document.querySelectorAll(".card.sold-out")).map(
+    (el) => el.querySelector("h3").textContent
+  );
+}
