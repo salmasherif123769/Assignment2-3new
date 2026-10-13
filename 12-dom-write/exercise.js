@@ -91,3 +91,64 @@ export function clearProducts() {
  */
 
 // TODO: write wireButtons here.
+function findCardByName(name) {
+  const cards = Array.from(document.querySelectorAll("#list .card"));
+  return cards.find((card) => {
+    const heading = card.querySelector("h3");
+    return heading && heading.textContent === name;
+  });
+}
+
+export function addProduct(name, price) {
+  const list = document.querySelector("#list");
+
+  const li = document.createElement("li");
+  li.className = "card";
+
+  const h3 = document.createElement("h3");
+  h3.textContent = name;
+
+  const p = document.createElement("p");
+  p.className = "price";
+  p.textContent = `${price} EGP`;
+
+  li.appendChild(h3);
+  li.appendChild(p);
+  list.appendChild(li);
+}
+
+export function removeProduct(name) {
+  const card = findCardByName(name);
+  if (card) {
+    card.remove();
+  }
+}
+
+export function markSoldOut(name) {
+  const card = findCardByName(name);
+  if (card) {
+    card.classList.add("sold-out");
+  }
+}
+
+export function clearProducts() {
+  const cards = document.querySelectorAll("#list .card");
+  cards.forEach((card) => card.remove());
+}
+
+export function wireButtons() {
+  const addButton = document.querySelector("#add");
+  const resetButton = document.querySelector("#reset");
+
+  if (addButton) {
+    addButton.addEventListener("click", () => {
+      addProduct("Notebook", 45);
+    });
+  }
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      clearProducts();
+    });
+  }
+}
