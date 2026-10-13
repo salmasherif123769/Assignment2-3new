@@ -87,3 +87,77 @@ export function renderList(items) {
  */
 
 // TODO: write wireForm here.
+const items = [];
+
+export function readForm() {
+  const nameInput = document.querySelector("#name");
+  const priceInput = document.querySelector("#price");
+
+  const name = nameInput ? nameInput.value.trim() : "";
+  const priceVal = priceInput ? priceInput.value.trim() : "";
+
+  return {
+    name,
+    price: priceVal === "" ? 0 : Number(priceVal),
+  };
+}
+
+export function clearForm() {
+  const nameInput = document.querySelector("#name");
+  const priceInput = document.querySelector("#price");
+
+  if (nameInput) nameInput.value = "";
+  if (priceInput) priceInput.value = "";
+}
+
+export function renderList(itemsToRender) {
+  const list = document.querySelector("#list");
+  if (!list) return;
+
+  list.replaceChildren();
+
+  itemsToRender.forEach((item) => {
+    const li = document.createElement("li");
+    li.className = "card";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.name;
+
+    const p = document.createElement("p");
+    p.className = "price";
+    p.textContent = `${item.price} EGP`;
+
+    li.appendChild(h3);
+    li.appendChild(p);
+    list.appendChild(li);
+  });
+}
+
+export function wireForm() {
+  const form = document.querySelector("#product-form");
+  const errorElement = document.querySelector("#error");
+
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = readForm();
+
+    if (!data.name) {
+      if (errorElement) errorElement.textContent = "Give the product a name.";
+      return;
+    }
+
+    if (typeof data.price !== "number" || isNaN(data.price) || data.price <= 0) {
+      if (errorElement) errorElement.textContent = "Give the product a price.";
+      return;
+    }
+
+    if (errorElement) errorElement.textContent = "";
+
+    items.push(data);
+    renderList(items);
+    clearForm();
+  });
+}
