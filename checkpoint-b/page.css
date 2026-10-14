@@ -1,0 +1,12 @@
+/* Checkpoint B — your styling. Build it to checkpoint-b/spec.md. */
+body {
+  font-family: sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.goods-item {
+  color: #111111;
+  background-color: #ffffff;
+  padding: 8px;
+}
